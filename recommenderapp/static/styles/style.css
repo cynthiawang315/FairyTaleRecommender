@@ -1,0 +1,31 @@
+
+body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+}
+
+#submit_btn {
+    text-align: center;
+}
+
+#res{
+    display: block;
+    display: flex;
+    flex-direction: column;
+    align: left;
+}
+
+#header {
+    text-align: center;
+}
+
+#pic {
+  vertical-align: text-top;
+}

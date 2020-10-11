@@ -1,0 +1,1 @@
+web: gunicorn fairytales_recommender_app:app --log-file=-

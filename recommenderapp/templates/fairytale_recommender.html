@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Simple Fairy Tale Recommender System</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, height=device-height">
+</head>
+
+<body>
+    <div>
+        <img id="pic" src="{{url_for('static', filename='img/book.jpg')}}" width="900" height="180">
+        <h1 id="header">A Simple Fairy Tale Recommender System</h1>
+    <form action="/">
+        Which of the following fairy tales do you like?
+        <br><br>
+        <input type="radio" name="story" value ='Hansel and Grethel'
+               {% if (x_userinput[1] and x_userinput[1]=='Hansel and Grethel') %} checked {% endif %}>
+            Hansel and Grethel by Brothers Grimm</input>
+        <br>
+        <input type="radio" name="story" value = 'Cinderella'{% if (x_userinput[1] and x_userinput[1]=='Cinderella') %} checked {% endif %}>
+            Cinderella by Brothers Grimm</input>
+        <br>
+        <input type="radio" name="story" value = "Rumpelstiltskin (Grimm's version)"{% if (x_userinput[1] and x_userinput[1]=="Rumpelstiltskin (Grimm's version)") %} checked {% endif %}>
+            Rumpelstiltskin by Brothers Grimm</input>
+        <br>
+        <input type="radio" name="story" value = "The Frog-King, or Iron Henry"{% if (x_userinput[1] and x_userinput[1]=='The Frog-King, or Iron Henry') %} checked {% endif %}>
+            The Frog Prince by Brothers Grimm</input>
+        <br>
+        <input type="radio" name="story" value = 'The Girl Without Hands'{% if (x_userinput[1] and x_userinput[1]=='The Girl Without Hands') %} checked {% endif %}>
+            The Girl Without Hands by Brothers Grimm</input>
+        <br>
+        <input type="radio" name="story" value = 'The Red Shoes'{% if (x_userinput[1] and x_userinput[1]=='The Red Shoes') %} checked {% endif %}>
+            The Red Shoes by Hans Christian Andersen</input>
+        <br>
+        <input type="radio" name="story" value = "The Emperor's New Clothes"{% if (x_userinput[1] and x_userinput[1]=="The Emperor's New Clothes") %} checked {% endif %}>
+            The Emperor's New Clothes by Hans Christian Andersen</input>
+        <br>
+        <input type="radio" name="story" value = 'The Little Mermaid'{% if (x_userinput[1] and x_userinput[1]=='The Little Mermaid') %} checked {% endif %}>
+            The Little Mermaid by Hans Christian Andersen</input>
+        <br>
+        <input type="radio" name="story" value = 'The Ugly Duckling'{% if (x_userinput[1] and x_userinput[1]=='The Ugly Duckling') %} checked {% endif %}>
+            The Ugly Duckling by Hans Christian Andersen</input>
+        <br>
+        <input type="radio" name="story" value = 'The Princess and the Pea'{% if (x_userinput[1] and x_userinput[1]=='The Princess and the Pea') %} checked {% endif %}>
+            The Princess and the Pea by Hans Christian Andersen</input>
+        <br><br>
+        <label for="num_story" class="labels">How many other fairy tales are you interested in?</label>
+        <br>
+        <select name="num_story" id="num_story" required>
+              <option value="">Please select</option>
+              <option value="1"{% if (x_userinput[0] and x_userinput[0]=='1') %} selected {% endif %}>1</option>
+              <option value="2"{% if (x_userinput[0] and x_userinput[0]=='2') %} selected {% endif %}>2</option>
+              <option value="3"{% if (x_userinput[0] and x_userinput[0]=='3') %} selected {% endif %}>3</option>
+              <option value="4"{% if (x_userinput[0] and x_userinput[0]=='4') %} selected {% endif %}>4</option>
+              <option value="5"{% if (x_userinput[0] and x_userinput[0]=='5') %} selected {% endif %}>5</option>
+        </select>
+        <br>
+
+        <div id="submit_btn">
+            <input type="submit" value="Get my recommendations" method="get">
+        </div>
+    <br><br><br>
+    </form>
+
+    <div id = 'res'>
+        <p id="results">You might like the following fairy tales:<br></p>
+        <div id="recommended">
+            <ul>
+                {% if recommendation %}
+                    {% for rec in recommendation %}
+                <li>{{ rec }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>
